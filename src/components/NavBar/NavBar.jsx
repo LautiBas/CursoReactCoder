@@ -1,24 +1,19 @@
+import NavItem from "./NavItem";
 import CartWidget from "./CartWidget";
+import "./navbar.css";
+import { Link } from "react-router-dom";
 
 function NavBar(){
     return(
-    <nav>
-        <ul>
-            <li>
-            <a href="/">Inicio</a>
-            </li>
-            <li>
-            <a href="/">Catalogo</a>
-            </li>
-            <li>
-            <a href="/">OFERTAS!</a>
-            </li>
-            <li>
-            <a href="/">Registrate</a>
-            </li>
-        </ul>
-        <CartWidget></CartWidget>
-    </nav>
+        <nav>
+            <ul className="nav-menu">
+            <NavItem href="/"> <img style={{width: 80, height: 80}} src="./logo.png" alt="logo" /></NavItem>
+            <Link to="/category/Indumentaria">Indumentaria</Link>
+            <Link to="/category/Calzado">Calzado</Link>
+            <Link to="/category/Accesorios">Accesorios</Link>
+            <CartWidget></CartWidget>
+            </ul>
+        </nav>
 );
 }
 
