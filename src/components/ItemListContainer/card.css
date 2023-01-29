@@ -42,6 +42,10 @@
   .item-card_detail{
     padding: 12px 8px;
   }
+
+  .item-card_button_btn__COcQx{
+    color: black;
+  }
   
   .item-card:hover .item-card_favicon{
     display: block;

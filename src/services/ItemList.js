@@ -7,7 +7,6 @@ const database = [
       imgurl: "https://static.nike.com/a/images/t_default/expzgdg8hmhmow5q6eme/calzado-air-force-1-shadow-kTgn9J.png",
       detail: "AF",
       price: 60000,
-      desc: "Descripcion del producto 1",
     },
     {
       id: 2,

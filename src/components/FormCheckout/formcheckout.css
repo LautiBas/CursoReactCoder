@@ -1,0 +1,14 @@
+.form{
+        border: solid thin rgb(167, 192, 149);
+        border-radius: 15px;
+        padding: 12px 25px;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        margin: 40px auto;
+        text-align: center;
+        justify-content: space-around;
+        max-width: 480px;
+    }
+
+

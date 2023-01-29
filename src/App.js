@@ -1,25 +1,43 @@
-import logo from './logo.svg';
 import './App.css';
 import ItemListContainer from "./components/ItemListContainer/ItemListContainer";
 import NavBar from './components/NavBar/NavBar';
-import Prendas from "./components/Prendas"
 import ItemDetailContainer from "./components/ItemDetailContainer/ItemDetailContainer"
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import HomePage from "./pages/HomePage";
+import PageNotFound from "./pages/PageNotFound";
+import { CartProvider } from "./storage/cartContext";
+import CartContainer from "./components/CartContainer/CartContainer";
+import { exportArray } from './services/firebase';
 
 function App() {
+  function logOutSession() {
+    console.log("logout");
+  }
+
+  function logInSession(username) {
+    alert(`Bienvenido el usuario: ${username}`);
+  }
+
   return (
-    <BrowserRouter>
-    <NavBar />
-    <Routes>
-    <Route path='/' element={<ItemListContainer/>} />
-    <Route path='/detalle/:itemid' element={<ItemDetailContainer/>} />
-    <Route path='/category/:categoryid' element={<ItemListContainer/>} />
-    <Route path='*' element={<h2>Pagina no encontrada</h2>} />
-    </Routes>
-    </BrowserRouter>
-);
+    <>
+    {/* <button onClick={exportArray}>Exportar</button> */}
+      <BrowserRouter>
+        <CartProvider>
+          <NavBar onLogin={logInSession} onLogout={logOutSession} />
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route
+              path="/category/:categoryid"
+              element={<HomePage />}
+            />
+            <Route path="/detalle/:itemid" element={<ItemDetailContainer />} />
+            <Route path="/cart" element={<CartContainer />} />
+            <Route path="*" element={<PageNotFound />} />
+          </Routes>
+        </CartProvider>
+      </BrowserRouter>
+    </>
+  );
 }
-
-
 
 export default App;

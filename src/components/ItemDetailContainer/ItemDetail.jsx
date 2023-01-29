@@ -3,7 +3,15 @@ import ItemCount from "../ItemCount/ItemCount";
 import "./itemdetail.css";
 import Button from "../Button/Button";
 
-function ItemDetail({ title, imgurl, desc, price, onAddToCart }) {
+function ItemDetail({
+  title,
+  imgurl,
+  category,
+  price,
+  onAddToCart,
+  isInCart,
+  stockUpdated,
+}) {
   return (
     <div className="card-detail_main">
       <div className="card-detail_img">
@@ -12,12 +20,15 @@ function ItemDetail({ title, imgurl, desc, price, onAddToCart }) {
       <div className="card-detail_detail">
         <h1>{title}</h1>
         <h4 className="priceTag">$ {price}</h4>
-        <p>{desc}</p>
+        <p>{category}</p>
       </div>
-      <ItemCount onAddToCart={onAddToCart} />
-      <a href="/cart">
-        <Button>Ir al cart</Button>
-      </a>
+      {isInCart ? (
+        <a href="/cart">
+          <Button>Ir al cart</Button>
+        </a>
+      ) : (
+        <ItemCount stock={stockUpdated} onAddToCart={onAddToCart} />
+      )}
     </div>
   );
 }

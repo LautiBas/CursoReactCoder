@@ -1,12 +1,32 @@
-import React, { useState, useEffect } from "react";
-import { getProd } from "../../ItemList/ItemList";
+import React, { useState, useEffect, useContext } from "react";
+import { getProd } from "../../services/firebase";
+import { cartContext } from "../../storage/cartContext";
 import ItemDetail from "./ItemDetail";
 import { useParams } from "react-router-dom";
 
 function ItemDetailContainer() {
-  const [prod, setProd] = useState([]);
+  const [prod, setProd] = useState({title: "loading", price: "--,--"});
+  const [isInCart, setIsInCart] = useState(false);
+
   let params = useParams();
-  console.log(params);
+  const {cart, addToCart } = useContext(cartContext);
+
+  function handleAddToCart(count) {
+    setIsInCart(true);
+    const prodAndCount = { ...prod, count: count };
+    addToCart(prodAndCount);
+  }
+
+  function checkStock() {
+    let itemInCart = cart.find((item) => item.id === prod.id);
+
+    let stockUpdated = prod.stock;
+
+    if (itemInCart) {
+      stockUpdated = prod.stock - itemInCart.count;
+    }
+    return stockUpdated;
+  }
 
   useEffect(() => {
     getProd(params.itemid)
@@ -18,10 +38,13 @@ function ItemDetailContainer() {
 
   return (
     <ItemDetail
+    isInCart={isInCart}
+    onAddToCart={handleAddToCart}
     title={prod.name}
     imgurl={prod.imgurl}
     desc={prod.desc}
     price={prod.price}
+    stockUpdated={checkStock()}
     />
 );
 }
