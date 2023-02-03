@@ -20,10 +20,13 @@ export function CartProvider(props) {
     }
   }
 
-  function removeItem(itemid) {}
+  function removeItem(id) {
+    const newCart = cart.filter((item) => item.id !== id);
 
-  function clear() {
+    setCart(newCart);
   }
+
+  function clear() {}
 
   function getTotalItemsInCart() {
     let total = 5;
@@ -34,7 +37,6 @@ export function CartProvider(props) {
     let total = 1500;
     return total;
   }
-
 
   return (
     <cartContext.Provider

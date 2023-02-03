@@ -5,11 +5,11 @@ import ItemDetail from "./ItemDetail";
 import { useParams } from "react-router-dom";
 
 function ItemDetailContainer() {
-  const [prod, setProd] = useState({title: "loading", price: "--,--"});
+  const [prod, setProd] = useState({ title: "loading", price: "--,--" });
   const [isInCart, setIsInCart] = useState(false);
 
   let params = useParams();
-  const {cart, addToCart } = useContext(cartContext);
+  const { cart, addToCart } = useContext(cartContext);
 
   function handleAddToCart(count) {
     setIsInCart(true);
@@ -38,15 +38,15 @@ function ItemDetailContainer() {
 
   return (
     <ItemDetail
-    isInCart={isInCart}
-    onAddToCart={handleAddToCart}
-    title={prod.name}
-    imgurl={prod.imgurl}
-    desc={prod.desc}
-    price={prod.price}
-    stockUpdated={checkStock()}
+      isInCart={isInCart}
+      onAddToCart={handleAddToCart}
+      title={prod.name}
+      imgurl={prod.imgurl}
+      desc={prod.desc}
+      price={prod.price}
+      stockUpdated={checkStock()}
     />
-);
+  );
 }
 
 export default ItemDetailContainer;

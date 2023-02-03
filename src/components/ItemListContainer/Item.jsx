@@ -19,9 +19,9 @@ function Item(props) {
         <small>{category}</small>
       </div>
       <Link to={`/detalle/${id}`}>
-      <Button padding="22px" color="purple">
-        Ver más
-      </Button>
+        <Button padding="22px" color="purple">
+          Ver más
+        </Button>
       </Link>
       <br></br>
     </div>

@@ -10,14 +10,16 @@ function ItemCount({ onAddToCart, stock }) {
   }
 
   function handleSubstract() {
-    setCount(count - 1);
+    if (count > 0) setCount(count - 1);
   }
 
   return (
     <div className="itemcount_container">
       <small>Agregá la cantidad deseada al carrito</small>
       <div className="itemcount_control">
-        <Button onClick={handleSubstract}>-</Button>
+        <Button disabled={count === 1} onClick={handleSubstract}>
+          -
+        </Button>
         <span className="itemcount_count">{count}</span>
         <Button onClick={handleAdd}>+</Button>
       </div>

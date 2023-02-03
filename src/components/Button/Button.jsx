@@ -1,20 +1,17 @@
 import React from "react";
 import styles from "./button.module.css";
 
-// useEffect
-
 export default function Button(props) {
-  // React.useState() -> [ stateVar, setterStateVar ]
-const [colorState, setColorState] = React.useState("black");
+  const [colorState, setColorState] = React.useState("black");
 
-let styleButton = {
+  let styleButton = {
     padding: props.padding,
     backgroundColor: colorState,
-};
+  };
 
-return (
+  return (
     <button onClick={props.onClick} style={styleButton} className={styles.btn}>
-    {props.children}
+      {props.children}
     </button>
-);
+  );
 }

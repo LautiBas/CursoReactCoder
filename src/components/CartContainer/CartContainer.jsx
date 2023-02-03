@@ -11,8 +11,10 @@ import FormCheckout from "../FormCheckout/FormCheckout";
 function CartContainer() {
   const [orderId, setOrderId] = useState();
 
-  const { cart, getTotalPriceInCart } = useCartContext();
+  const { cart, getTotalPriceInCart, removeItem } = useCartContext();
   const navigateTo = useNavigate();
+
+  let suma = cart.reduce((acc, prod) => acc + prod.price * prod.count, 0);
 
   function handleCheckout(evt, userData) {
     const items = cart.map(({ id, price, title, count }) => ({
@@ -29,7 +31,6 @@ function CartContainer() {
       date: new Date(),
     };
 
-
     createOrder(order).then((id) => {
       Swal.fire({
         title: "Gracias por tu compra!",
@@ -39,11 +40,9 @@ function CartContainer() {
       });
     });
 
-
     createOrder(order).then((id) => {
       navigateTo(`/thank-you/${id}`);
-    }); 
-
+    });
 
     async function sendOrder() {
       try {
@@ -95,7 +94,7 @@ function CartContainer() {
               <td>$ {item.price}</td>
               <td>{item.count}</td>
               <td>
-                <Button color="#c63224" onClick={item.removeItem}>
+                <Button color="#c63224" onClick={() => removeItem(item.id)}>
                   X
                 </Button>
               </td>
@@ -106,7 +105,7 @@ function CartContainer() {
       </table>
 
       <div className="cartList_detail">
-        <h4>El total de tu compra es de</h4>
+        <h4>El total de tu compra es de ${suma}</h4>
       </div>
 
       <FormCheckout onCheckout={handleCheckout} />

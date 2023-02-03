@@ -3,7 +3,6 @@ import "./loader.css";
 import { DotWave } from "@uiball/loaders";
 
 function Loader(props) {
-  /*  return <div class="lds-dual-ring"></div>; */
   let styleContainer = {
     display: "flex",
     width: "100%",

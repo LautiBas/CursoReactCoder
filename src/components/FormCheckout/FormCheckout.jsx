@@ -3,30 +3,29 @@ import Button from "../Button/Button";
 import "./formcheckout.css";
 
 function InputForm(props) {
-return (
+  return (
     <div style={{ display: "flex", marginBottom: 8 }}>
-    <label style={{ width: "100px", marginRight: 4 }}>{props.label}</label>
-    <input
+      <label style={{ width: "100px", marginRight: 4 }}>{props.label}</label>
+      <input
         value={props.value}
         name={props.name}
         type="text"
         onChange={props.onChange}
-    />
+      />
     </div>
-);
+  );
 }
 
 export default function FormCheckout(props) {
-const [userData, setUserData] = useState({
+  const [userData, setUserData] = useState({
     name: "",
     phone: "",
     email: "",
-});
+  });
 
-let fieldsForm = Object.keys(userData);
+  let fieldsForm = Object.keys(userData);
 
-
-function onInputChange(evt) {
+  function onInputChange(evt) {
     let value = evt.target.value;
     let inputName = evt.target.name;
 
@@ -34,44 +33,44 @@ function onInputChange(evt) {
 
     newState[inputName] = value;
     setUserData(newState);
-}
+  }
 
-function onSubmit(evt) {
+  function onSubmit(evt) {
     evt.preventDefault();
     console.log(`Gracias por tu compra!`);
-}
+  }
 
-function formIsInvalid() {
+  function formIsInvalid() {
     return !(
-    userData.name !== "" &&
-    userData.phone !== "" &&
-    userData.email !== ""
+      userData.name !== "" &&
+      userData.phone !== "" &&
+      userData.email !== ""
     );
-}
+  }
 
-return (
+  return (
     <form onSubmit={onSubmit} className="form">
-    <h1 className="titulo">Llena tus datos para finalizar la compra 🛍</h1>
-    {fieldsForm.map((field) => (
+      <h1 className="titulo">Llena tus datos para finalizar la compra 🛍</h1>
+      {fieldsForm.map((field) => (
         <InputForm
-        value={userData[field]}
-        name={field}
-        onChange={onInputChange}
-        label={field}
-        userData={userData}
+          value={userData[field]}
+          name={field}
+          onChange={onInputChange}
+          label={field}
+          userData={userData}
         />
-    ))}
-    <button
+      ))}
+      <button
         onClick={(evt) => props.onCheckout(evt, userData)}
         disabled={formIsInvalid()}
         type="submit"
-    >
+      >
         Crear orden
-    </button>
+      </button>
 
-    <button onClick={() => setUserData({ name: "", email: "", phone: "" })}>
+      <button onClick={() => setUserData({ name: "", email: "", phone: "" })}>
         Limpiar
-    </button>
+      </button>
     </form>
-);
+  );
 }

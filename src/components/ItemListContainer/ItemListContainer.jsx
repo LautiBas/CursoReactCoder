@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import Item from "./Item";
 import Flex from "../Flex/Flex";
-import{ getProdByCategory } from "../../services/firebase";
+import { getProdByCategory } from "../../services/firebase";
 import { obtenerProductos } from "../../services/firebase";
 import { useParams } from "react-router-dom";
 import "./alert.css";
@@ -12,7 +12,7 @@ function ItemListContainer() {
   const [isLoading, setIsLoading] = useState(true);
   const [alertText, setAlertText] = useState();
 
-  let {categoryid} = useParams();
+  let { categoryid } = useParams();
 
   useEffect(() => {
     if (!categoryid) {

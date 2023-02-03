@@ -3,12 +3,18 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
-    width: 100%;
     margin: 0;  
     height: 90px;
     background-color: #F46036;
     top: 0;
     margin-bottom: 45px;
+}
+
+a{
+        text-decoration: none !important;
+        color: black !important;
+        font-size: large;
+        font-weight: 500;
 }
 
 .nav-item{
@@ -24,7 +30,6 @@
 }
 
 
-.nav-link:hover{
-    font-weight: 600;
-    color:rgb(19, 19, 17)
+a:hover{
+    font-weight: 700;
 }
