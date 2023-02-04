@@ -1,6 +1,6 @@
 # Mi primer Web realizada con ✨ReactJs✨
 
-### Sobre el proyecto 
+## Sobre el proyecto 
 * Ecommerce destinado a la compra de prendas y accesorios para vestir.
 * La Web fue desarrollada como proyecto final para el curso de ReactJs en la plataforma de CoderHouse.
 * El objetivo principal era lograr una pagina dinámica en la cual se pueda tener un listado de items con cierto stock, distintas secciones enlazadas que permitan una navegación sencilla e intuitiva, contar con un carrito en el cual se pueda cargar los items y simular una compra.
