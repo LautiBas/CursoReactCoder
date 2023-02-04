@@ -1,4 +1,4 @@
-# Bienvenidos a mi primer Web realizada con ✨ReactJs✨
+# Mi primer Web realizada con ✨ReactJs✨
 
 ### Sobre el proyecto 
 * Ecommerce destinado a la compra de prendas y accesorios para vestir.
